@@ -18,7 +18,6 @@ const TeamList = [
   },
 ];
 const Team = () => {
-  // const [toggleDropdown, isToggleDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -30,7 +29,6 @@ const Team = () => {
 
     if (dropdownRef.current) {
       dropdownRef.current.addEventListener("mouseenter", handleMouseEnter);
-      // dropdownRef.current.addEventListener("mouseleave", handleMouseLeave);
     }
     return () => {
       if (dropdownRef.current) {
@@ -48,12 +46,6 @@ const Team = () => {
         <div>
           <Menu.Button
             ref={dropdownRef}
-            // onMouseEnter={() => {
-            //   isToggleDropdown(true);
-            // }}
-            // onMouseLeave={() => {
-            //   isToggleDropdown(false);
-            // }}
             className="relative h-fit w-fit flex rounded-full text-sm"
           >
             <span className="absolute -inset-1.5" />
@@ -63,7 +55,6 @@ const Team = () => {
         </div>
         <Transition
           as={Fragment}
-          // show={toggleDropdown}
           enter="transition ease-out duration-100 "
           enterFrom="transform opacity-0 scale-95"
           enterTo="transform opacity-100 scale-100"
@@ -73,12 +64,6 @@ const Team = () => {
         >
           <Menu.Items
             ref={dropdownRef}
-            // onMouseEnter={() => {
-            //   isToggleDropdown(true);
-            // }}
-            // onMouseLeave={() => {
-            //   isToggleDropdown(false);
-            // }}
             className="absolute top-full z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           >
             {TeamList.map((item) => (
