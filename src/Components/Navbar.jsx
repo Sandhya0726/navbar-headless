@@ -1,7 +1,7 @@
 import { Disclosure } from "@headlessui/react";
-import MobileMenu from "./Mobilemenu";
+import MobileMenu from "./Common/Mobilemenu";
 import ItemsList from "./ItemsList";
-import Button from "./Button";
+import Button from "./Common/Button";
 import DropdownMenu from "./DropdownMenu";
 import DisclosingPanel from "./DisclosingPanel";
 

@@ -1,34 +1,43 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { classNames } from "./Navbar";
-
+import { classNames } from "../Components/Navbar";
 const Projects = [
   {
-    name: "FrontEnd Development",
-    href: "#",
+    name: "Clothes",
+    href: "/posts/clothes",
   },
   {
-    name: "BackEnd Development",
-    href: "#",
-  },
-  {
-    name: "Full Stack - MERN",
-    href: "#",
+    name: "GetPosts",
+    href: "/posts/posts",
   },
 ];
-const ProductDropDown = () => {
+const Posts = () => {
+  const [toggleDropdown, isToggleDropdown] = useState(false);
+
   return (
     <>
-      <Menu as="div" className="relative ml-3">
+      <Menu
+        as="div"
+        className="relative ml-3 flex  py-2 place-content-center hover:bg-gray-700 rounded-md"
+      >
         <div>
-          <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+          <Menu.Button
+            onMouseEnter={() => {
+              isToggleDropdown(true);
+            }}
+            onMouseLeave={() => {
+              isToggleDropdown(false);
+            }}
+            className="relative  flex  text-sm "
+          >
             <span className="absolute -inset-1.5" />
             <span className="sr-only">Open dashboard menu</span>
-            <button className="w-fit h-fit p-2 ">Projects</button>
+            <button className=" p-2 ">Posts</button>
           </Menu.Button>
         </div>
         <Transition
           as={Fragment}
+          show={toggleDropdown}
           enter="transition ease-out duration-100"
           enterFrom="transform opacity-0 scale-95"
           enterTo="transform opacity-100 scale-100"
@@ -36,7 +45,15 @@ const ProductDropDown = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items
+            onMouseEnter={() => {
+              isToggleDropdown(true);
+            }}
+            onMouseLeave={() => {
+              isToggleDropdown(false);
+            }}
+            className="absolute top-full text-left z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          >
             {Projects.map((item) => (
               <Menu.Item>
                 {({ active }) => (
@@ -58,4 +75,4 @@ const ProductDropDown = () => {
     </>
   );
 };
-export default ProductDropDown;
+export default Posts;

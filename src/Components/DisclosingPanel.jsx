@@ -1,5 +1,5 @@
 import { Disclosure } from "@headlessui/react";
-import { navigation } from "./Navigate";
+import { navigation } from "./ArrayData/Navigate";
 import { classNames } from "./Navbar";
 const DisclosingPanel = () => {
   return (
