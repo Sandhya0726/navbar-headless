@@ -17,37 +17,7 @@ const List = [
   },
 ];
 const MenuItemsDropdown = () => {
-  // const [toggleDropdown, isToggleDropdown] = useState(false);
   const dropdownRef = useRef(null);
-
-  // useEffect(() => {
-  // dropdownRef.current.click();
-
-  //   const handleMouseEnter = () => {
-  //     if (dropdownRef.current) {
-  //       dropdownRef.current.click();
-  //     }
-  //   };
-
-  // const handleMouseLeave = () => {
-  //   if (dropdownRef.current) {
-  //     dropdownRef.current.click();
-  //   }
-  // };
-
-  //   if (dropdownRef.current) {
-  //     dropdownRef.current.addEventListener("mouseenter", handleMouseEnter);
-  //     // dropdownRef.current.addEventListener("mouseleave", handleMouseLeave);
-  //   }
-
-  //   return () => {
-  //     if (dropdownRef.current) {
-  //       dropdownRef.current.removeEventListener("mouseenter", handleMouseEnter);
-  //       // dropdownRef.current.removeEventListener("mouseleave", handleMouseLeave);
-  //     }
-  //   };
-  // }, []);
-
   return (
     <>
       <Menu
@@ -57,10 +27,8 @@ const MenuItemsDropdown = () => {
         <div
           onMouseEnter={() => {
             dropdownRef.current.click();
-            // isToggleDropdown(true);
           }}
           onMouseLeave={() => {
-            // isToggleDropdown(false);
             dropdownRef.current.click();
           }}
         >
@@ -79,16 +47,7 @@ const MenuItemsDropdown = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items
-            // ref={dropdownRef}
-            // onMouseEnter={() => {
-            //   isToggleDropdown(true);
-            // }}
-            // onMouseLeave={() => {
-            //   isToggleDropdown(false);
-            // }}
-            className="absolute text-left top-full z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-          >
+          <Menu.Items className="absolute text-left top-full z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             {List.map((item) => (
               <Menu.Item>
                 {({ active }) => (

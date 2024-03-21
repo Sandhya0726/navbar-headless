@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import { axios } from "axios";
 
 const ProductView = () => {
   const [productView, isProductView] = useState([]);
@@ -10,7 +9,6 @@ const ProductView = () => {
     axios
       .get(`https://api.escuelajs.co/api/v1/products/${id}`)
       .then((response) => {
-        // console.log(response.data);
         isProductView(response.data);
       });
   }, []);
