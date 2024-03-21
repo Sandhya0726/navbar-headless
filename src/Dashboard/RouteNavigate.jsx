@@ -9,6 +9,7 @@ import Dashboard from "./Dashboard";
 import Clothes from "../Posts/Clothes/Clothes";
 import ProductView from "../Posts/ProductView";
 import GetApi from "../Posts/FetchApi/GetApi";
+import Update from "../Posts/FetchApi/Update";
 
 export const RouteNavigate = () => {
   return (
@@ -24,6 +25,7 @@ export const RouteNavigate = () => {
       <Route path="/posts/clothes" element={<Clothes />} />
       <Route path="/posts/posts" element={<GetApi />} />
       <Route path="/categories/:id" element={<ProductView />} />
+      <Route path="/update/:id" element={<Update />} />
     </Routes>
   );
 };

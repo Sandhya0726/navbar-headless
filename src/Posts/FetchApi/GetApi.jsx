@@ -1,48 +1,25 @@
 import axios from "axios";
 import { useState } from "react";
 import { Layout } from "../../Layout/Layout";
+import { Link } from "react-router-dom";
 
 const GetApi = () => {
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState();
   const [error, setError] = useState("");
   const handleGetApi = async () => {
     try {
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/comments?postId=1"
+        "https://jsonplaceholder.typicode.com/posts"
       );
       setResult(response.data);
+      console.log(response.data);
     } catch (err) {
       setError(err.message);
     }
   };
 
-  const handlePatch = () => {
-    fetch("https://jsonplaceholder.typicode.com/posts/1", {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: "Twilight",
-      }),
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
-  };
-  const handleDelete = () => {
-    fetch("https://jsonplaceholder.typicode.com/posts/1", {
-      method: "DELETE",
-    }).then((response) => {
-      if (response.ok) {
-        console.log("Deleted successfully");
-      } else {
-        console.log("Deleting is not successful");
-      }
-    });
+  const handleChange = (e) => {
+    console.log(e.target.value);
   };
 
   return (
@@ -59,37 +36,45 @@ const GetApi = () => {
           {error && <p className="text-center"> {error}</p>}
           {result?.length > 0 && (
             <div className=" grid grid-cols-1 gap-4 items-center ">
-              {result.map((item) => (
+              {result.slice(0, 10).map((item) => (
                 <div
                   className="h-fit w-full gap-2   text-left capitalize p-3 font-medium "
                   key={item.id}
                 >
                   {" "}
                   <div className="w-[90%] p-10 bg-slate-300 ">
-                    <span>Name:</span>
-                    <input
-                      className="w-96 h-10 mb-2 border bg-gray-100"
-                      type="text"
-                      value={item.name}
-                    />
-                    <br />
-                    <span>email:</span>
-                    <input
-                      className="w-96 h-10 mb-2 border bg-gray-100"
-                      type="text"
-                      value={item.email}
-                    />
-                    <br />
-                    <span>Body:</span>
-                    <input
-                      className="w-96 h-10 mb-2 border bg-gray-100"
-                      type="text"
-                      value={item.body}
-                    />
-                  </div>
-                  <div>
-                    <button>edit</button>
-                    <button>delete</button>
+                    <Link to={`/update/${item.id}`}>
+                      <span>Name:</span>
+                      <input
+                        className="w-96 h-10 mb-2 border bg-gray-100"
+                        type="text"
+                        name="name"
+                        value={item.title}
+                      />
+                      <br />
+                      <span>email:</span>
+                      <input
+                        className="w-96 h-10 mb-2 border bg-gray-100"
+                        type="text"
+                        name="email"
+                        value={item.id}
+                      />
+                      <br />
+                      <span>Body:</span>
+                      <input
+                        className="w-96 h-10 mb-2 border bg-gray-100"
+                        type="text"
+                        name="body"
+                        value={item.body}
+                      />
+                      <div>
+                        <button className=" bg-blue-300 p-1 mt-2 mr-2">
+                          Edit
+                        </button>
+
+                        <button className=" bg-red-300 p-1 mt-2">delete</button>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               ))}
