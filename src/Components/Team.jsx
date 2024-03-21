@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { classNames } from "./Navbar";
 import { Link } from "react-router-dom";
@@ -20,37 +20,26 @@ const TeamList = [
 const Team = () => {
   const dropdownRef = useRef(null);
 
-  useEffect(() => {
-    const handleMouseEnter = () => {
-      if (dropdownRef.current) {
-        dropdownRef.current.click();
-      }
-    };
-
-    if (dropdownRef.current) {
-      dropdownRef.current.addEventListener("mouseenter", handleMouseEnter);
-    }
-    return () => {
-      if (dropdownRef.current) {
-        dropdownRef.current.removeEventListener("mouseenter", handleMouseEnter);
-      }
-    };
-  }, []);
-
   return (
     <>
       <Menu
+        onMouseEnter={() => {
+          dropdownRef.current.click();
+        }}
+        onMouseLeave={() => {
+          dropdownRef.current.click();
+        }}
         as="div"
-        className="relative ml-3 text-center  py-2 flex place-content-center hover:bg-gray-700 rounded-md "
+        className="relative ml-3 text-center focus:outline-none py-2 flex place-content-center hover:bg-gray-700 rounded-md "
       >
         <div>
           <Menu.Button
             ref={dropdownRef}
-            className="relative h-fit w-fit flex rounded-full text-sm"
+            className="relative h-fit w-fit flex rounded-full text-sm focus:outline-none"
           >
             <span className="absolute -inset-1.5" />
             <span className="sr-only">Open dashboard menu</span>
-            <button className="  p-2">Team</button>
+            <button className="  p-2  ">Team</button>
           </Menu.Button>
         </div>
         <Transition
@@ -63,7 +52,12 @@ const Team = () => {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items
-            ref={dropdownRef}
+            onMouseEnter={() => {
+              dropdownRef.current.click();
+            }}
+            onMouseLeave={() => {
+              dropdownRef.current.click();
+            }}
             className="absolute top-full z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           >
             {TeamList.map((item) => (

@@ -32,7 +32,10 @@ const MenuItemsDropdown = () => {
             dropdownRef.current.click();
           }}
         >
-          <Menu.Button ref={dropdownRef} className="relative  flex  text-sm ">
+          <Menu.Button
+            ref={dropdownRef}
+            className="relative  flex  text-sm focus:outline-none"
+          >
             <span className="absolute -inset-1.5" />
             <span className="sr-only">Open dashboard menu</span>
             <button className=" p-2">Dashboard</button>
