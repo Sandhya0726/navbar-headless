@@ -41,8 +41,6 @@ const Update = () => {
       .then((response) => {
         setResult(response.data);
         setTitle(response.data.title);
-        // setEmail(response.data.id);
-        // navigate("/posts/posts");
       });
   };
 

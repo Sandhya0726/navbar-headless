@@ -47,7 +47,15 @@ const MenuItemsDropdown = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute text-left top-full z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items
+            onMouseEnter={() => {
+              dropdownRef.current.click();
+            }}
+            onMouseLeave={() => {
+              dropdownRef.current.click();
+            }}
+            className="absolute text-left top-full z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          >
             {List.map((item) => (
               <Menu.Item>
                 {({ active }) => (
