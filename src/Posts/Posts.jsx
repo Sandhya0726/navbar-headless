@@ -57,7 +57,7 @@ const Posts = () => {
             {Projects.map((item) => (
               <Menu.Item>
                 {({ active }) => (
-                  <a
+                  <Link
                     href={item.href}
                     className={classNames(
                       active ? "bg-gray-100" : "",
@@ -65,7 +65,7 @@ const Posts = () => {
                     )}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 )}
               </Menu.Item>
             ))}
